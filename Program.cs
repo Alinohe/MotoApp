@@ -1,27 +1,32 @@
-﻿var stack = new Stack<double>();
-stack.Push(item: 4.5);
-stack.Push(item: 43);
-stack.Push(item: 333.6);
+﻿using MotoApp.Entities;
+using MotoApp.Data;
+using MotoApp.Repositories;
 
-var stackString = new Stack<string>();
-stackString.Push(item: "Client A");
-stackString.Push(item: "Client B");
-stackString.Push(item: "Client C");
-stackString.Push(item: "Client D");
+var employeeRepository = new SqlRepository<Employee>(new MotoAppDbContext());
+AddEmplpoyees(employeeRepository);
+AddManagers(employeeRepository);
+WriteAllToConsole(employeeRepository);
 
-double sum = 0.0;
-
-while (stack.Count > 0)
+static void AddEmplpoyees(IRepository<Employee> employeeRepository)
 {
-    double item = stack.Pop();
-    Console.WriteLine($"Item: {item}");
-    sum += item;
+    employeeRepository.Add(new Employee { FirstName = "Adam" });
+    employeeRepository.Add(new Employee { FirstName = "Piots" });
+    employeeRepository.Add(new Employee { FirstName = "Zuzanna" });
+    employeeRepository.Save();
 }
 
-Console.WriteLine($"Sum: {sum}");
-
-while (stackString.Count > 0)
+static void AddManagers(IWriteRepository<Manager> employeeRepository)
 {
-    string item = stackString.Pop();
-    Console.WriteLine($"Item: {item}");
+    employeeRepository.Add(new Manager { FirstName = "Przemek" });
+    employeeRepository.Add(new Manager { FirstName = "Tomek" });
+    employeeRepository.Save();
+}
+
+static void WriteAllToConsole(IReadRepository<IEntity> repository)
+{
+    var items = repository.GetAll();
+    foreach(var item  in items)
+    {
+        Console.WriteLine(item);
+    }
 }
