@@ -10,16 +10,16 @@ WriteAllToConsole(employeeRepository);
 static void AddEmplpoyees(IRepository<Employee> employeeRepository)
 {
     employeeRepository.Add(new Employee { FirstName = "Adam" });
-    employeeRepository.Add(new Employee { FirstName = "Piots" });
+    employeeRepository.Add(new Employee { FirstName = "Piotr" });
     employeeRepository.Add(new Employee { FirstName = "Zuzanna" });
     employeeRepository.Save();
 }
 
-static void AddManagers(IWriteRepository<Manager> employeeRepository)
+static void AddManagers(IWriteRepository<Manager> managerRepository)
 {
-    employeeRepository.Add(new Manager { FirstName = "Przemek" });
-    employeeRepository.Add(new Manager { FirstName = "Tomek" });
-    employeeRepository.Save();
+    managerRepository.Add(new Manager { FirstName = "Robert" });
+    managerRepository.Add(new Manager { FirstName = "Tomek" });
+    managerRepository.Save();
 }
 
 static void WriteAllToConsole(IReadRepository<IEntity> repository)

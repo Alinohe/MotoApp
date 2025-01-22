@@ -14,31 +14,12 @@ internal class SqlRepository<T> : IRepository<T> where T : class, IEntity, new()
         _dbSet = _dbContext.Set<T>();
     }
 
-    public IEnumerable<T> GetAll()
-    {
-        //return _dbSet.OrderBy(item => item.Id).ToList();
-        return _dbSet.ToList();
+    public IEnumerable<T> GetAll() => _dbSet.ToList();
 
-    }
-    public T GetById(int id)
-    {
-        return _dbSet.Find(id);
-    }
-
-    public void Add(T item)
-    {
-        _dbSet.Add(item);
-    }
-
-    public void Remove(T item) 
-    {
-        _dbSet.Remove(item);
-    }
-
-    public void Save()
-    {
-        _dbContext.SaveChanges();
-    }
+    public T GetById(int id) => _dbSet.Find(id);
+    public void Add(T item) => _dbSet.Add(item);
+    public void Save() => _dbContext.SaveChanges();
+    public void Remove(T item) => _dbSet.Remove(item);
 
 }
 
