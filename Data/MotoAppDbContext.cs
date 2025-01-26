@@ -1,11 +1,11 @@
 ﻿
 namespace MotoApp.Data;
-    using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MotoApp.Entities;
 
 
-    public class MotoAppDbContext : DbContext
-    {
+public class MotoAppDbContext : DbContext
+{
     public DbSet<Employee> Employees => Set<Employee>();
     public DbSet<BusinessPartner> BusinessPartner => Set<BusinessPartner>();
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -14,5 +14,5 @@ using MotoApp.Entities;
         optionsBuilder.UseInMemoryDatabase("StorageAppDb");
     }
 
-    }
+}
 
