@@ -1,7 +1,7 @@
 ﻿
-internal class ItemAdded
+public class ItemAdded
 {
-    private Action<object> employeeAdded;
+    public Action<object> employeeAdded;
 
     public ItemAdded(Action<object> employeeAdded)
     {

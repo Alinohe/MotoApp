@@ -3,16 +3,15 @@ using MotoApp.Data;
 using MotoApp.Repositories;
 using MotoApp.Repositories.Extensions;
 
-var itemAdded = new ItemAdded(EmployeeAdded);
-var repository = new SqlRepository<Employee>(new MotoAppDbContext(), itemAdded);
+var repository = new SqlRepository<Employee>(new MotoAppDbContext(), EmployeeAdded);
 AddEmplpoyees(repository);
 WriteAllToConsole(repository);
 
-static void EmployeeAdded(object item)
+static void EmployeeAdded(Employee item)
 {
-    var employee = (Employee)item;
+    //var employee = (Employee)item;
 
-    Console.WriteLine($"{employee.FirstName}: Employee added");
+    Console.WriteLine($"{item.FirstName}: Employee added");
 }
 
 
