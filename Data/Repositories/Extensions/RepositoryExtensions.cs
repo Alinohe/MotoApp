@@ -1,10 +1,12 @@
-﻿namespace MotoApp.Repositories.Extensions;
-using MotoApp.Entities;
+﻿namespace MotoApp.Data.Repositories.Extensions;
+
+using MotoApp.Data.Entities;
+using MotoApp.Data.Repositories;
 using System.Runtime.CompilerServices;
 
 public static class RepositoryExtensions
 {
-    public static void AddBatch<T>(IRepository<T> repository, T[] items)
+    public static void AddBatch<T>(this IRepository<T> repository, T[] items)
         where T : class, IEntity
     {
         foreach (var item in items)
@@ -12,7 +14,6 @@ public static class RepositoryExtensions
             repository.Add(item);
         }
         repository.Save();
-
     }
 
     public static void AddBatch<T>(this string str, T[] items)
@@ -20,4 +21,5 @@ public static class RepositoryExtensions
     {
 
     }
+
 }
