@@ -3,17 +3,19 @@ using MotoApp;
 using MotoApp.Components.DataProvider;
 using MotoApp.Data.Entities;
 using MotoApp.Data.Repositories;
+using MotoApp.Components.CsvReader;
 
 
 var services = new ServiceCollection();
 services.AddSingleton<IApp, App>();
 services.AddSingleton<IRepository<Employee>, ListRepository<Employee>>();
 services.AddSingleton<IRepository<Car>, ListRepository<Car>>();
-services.AddSingleton<ICarProvider,CarProvider>();
+services.AddSingleton<ICarProvider, CarProvider>();
+services.AddSingleton<ICsvReader, CsvReader>();
 
 var serviceProvider = services.BuildServiceProvider();
 var app = serviceProvider.GetService<IApp>();
- app.Run();
+app.Run();
 
 
 
